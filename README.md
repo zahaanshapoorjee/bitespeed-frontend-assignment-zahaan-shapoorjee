@@ -10,16 +10,9 @@ A React-based visual flow builder for creating chatbot conversation flows with d
 - Real-time flow validation
 - Mobile touch support
 
-## Quick Start
+## Live Demo
 
-```bash
-git clone <repo-url>
-cd chatbot-flow-builder
-npm install
-npm start
-```
-
-Open http://localhost:3000
+**[View Live Application](https://bitespeed-frontend-zahaan-shapoorjee.netlify.app/)**
 
 ## Usage
 
