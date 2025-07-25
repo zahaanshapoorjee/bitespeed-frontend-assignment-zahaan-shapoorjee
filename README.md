@@ -9,7 +9,6 @@ A React-based visual flow builder for creating chatbot conversation flows with d
 - Inline text editing (click to edit)
 - Real-time flow validation
 - Mobile touch support
-- Auto-save to localStorage
 
 ## Quick Start
 
