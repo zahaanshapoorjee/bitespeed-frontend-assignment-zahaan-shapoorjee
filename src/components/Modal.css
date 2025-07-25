@@ -1,0 +1,453 @@
+
+/**
+ * Modal Backdrop
+ * Creates a full-screen overlay with subtle blur effect
+ */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+/* Backdrop open state with smooth animation */
+.modal-backdrop--open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/**
+ * Modal Content Container
+ * Main modal dialog with elegant styling and animations
+ */
+.modal-content {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+              0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  min-width: 400px;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow: auto;
+  transform: scale(0.95);
+  transition: transform 0.2s ease;
+}
+
+/* Content animation when backdrop is open */
+.modal-backdrop--open .modal-content {
+  transform: scale(1);
+}
+
+/**
+ * Modal Header
+ */
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.modal-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.modal-icon {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.modal-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* Close Button */
+.modal-close-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.modal-close-button:hover {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.modal-close-button:active {
+  transform: scale(0.95);
+}
+
+/**
+ * Modal Body
+ */
+.modal-body {
+  padding: 16px 24px;
+  color: #374151;
+  line-height: 1.6;
+}
+
+/**
+ * Modal Footer
+ */
+.modal-footer {
+  padding: 16px 24px 24px;
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  border-top: 1px solid #e5e7eb;
+  background: #f9fafb;
+  border-radius: 0 0 12px 12px;
+}
+
+/**
+ * Button styles for modal actions
+ */
+.modal-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 80px;
+}
+
+.modal-button--cancel {
+  background: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
+
+.modal-button--cancel:hover {
+  background: #e5e7eb;
+  border-color: #9ca3af;
+}
+
+.modal-button--confirm {
+  background: #dc2626;
+  color: white;
+}
+
+.modal-button--confirm:hover {
+  background: #b91c1c;
+}
+
+.modal-button--primary {
+  background: #3b82f6;
+  color: white;
+}
+
+.modal-button--primary:hover {
+  background: #2563eb;
+}
+
+/**
+ * Type-specific styling for different modal types
+ */
+
+/* Success Modal */
+.modal-content--success {
+  border-top: 4px solid #10b981;
+}
+
+/* Error Modal */
+.modal-content--error {
+  border-top: 4px solid #ef4444;
+}
+
+/* Warning Modal */
+.modal-content--warning {
+  border-top: 4px solid #f59e0b;
+}
+
+/* Info Modal */
+.modal-content--info {
+  border-top: 4px solid #3b82f6;
+}
+
+/* Confirm Modal */
+.modal-content--confirm {
+  border-top: 4px solid #f59e0b;
+}
+
+@media (max-width: 640px) {
+  .modal-content {
+    width: 95%;
+    max-width: none;
+    margin: 20px;
+    border-radius: 12px;
+  }
+  
+  .modal-header {
+    padding: 20px 24px 16px;
+  }
+  
+  .modal-body {
+    padding: 20px 24px 24px;
+  }
+  
+  .modal-title {
+    font-size: 18px;
+  }
+  
+  .modal-icon {
+    font-size: 20px;
+  }
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@media (prefers-contrast: high) {
+  .modal-backdrop {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: none;
+  }
+  
+  .modal-content {
+    border: 2px solid #000000;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal-backdrop,
+  .modal-content,
+  .modal-close-button {
+    transition: none;
+  }
+  
+  .modal-backdrop--open .modal-content {
+    transform: none;
+  }
+}
+
+
+/* Tablet adjustments */
+@media (max-width: 1024px) {
+  .modal-content {
+    min-width: 350px;
+    max-width: 450px;
+    margin: 20px;
+  }
+}
+
+/* Mobile devices */
+@media (max-width: 768px) {
+  .modal-backdrop {
+    padding: 16px;
+  }
+  
+  .modal-content {
+    width: 100%;
+    max-width: none;
+    min-width: auto;
+    margin: 0;
+    border-radius: 12px;
+    max-height: 90vh;
+  }
+  
+  .modal-header {
+    padding: 16px 20px 12px;
+  }
+  
+  .modal-title {
+    font-size: 16px;
+  }
+  
+  .modal-icon {
+    font-size: 20px;
+  }
+  
+  .modal-close-button {
+    font-size: 20px;
+    padding: 6px;
+  }
+  
+  .modal-body {
+    padding: 12px 20px 16px;
+    font-size: 14px;
+  }
+  
+  .modal-footer {
+    padding: 12px 20px 20px;
+    gap: 10px;
+  }
+  
+  .modal-button {
+    padding: 12px 16px;
+    font-size: 14px;
+    min-width: 90px;
+    border-radius: 8px;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .modal-backdrop {
+    padding: 12px;
+  }
+  
+  .modal-content {
+    border-radius: 10px;
+  }
+  
+  .modal-header {
+    padding: 14px 16px 10px;
+  }
+  
+  .modal-title-wrapper {
+    gap: 10px;
+  }
+  
+  .modal-title {
+    font-size: 15px;
+  }
+  
+  .modal-icon {
+    font-size: 18px;
+  }
+  
+  .modal-close-button {
+    font-size: 18px;
+    padding: 4px;
+  }
+  
+  .modal-body {
+    padding: 10px 16px 14px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  
+  .modal-footer {
+    padding: 10px 16px 16px;
+    gap: 8px;
+    flex-direction: column-reverse;
+  }
+  
+  .modal-button {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 16px; /* Better readability on mobile */
+    min-width: auto;
+    order: 2;
+  }
+  
+  .modal-button--cancel {
+    order: 1;
+  }
+  
+  .modal-button--confirm,
+  .modal-button--primary {
+    order: 2;
+  }
+}
+
+/* Touch-friendly interactions */
+@media (hover: none) and (pointer: coarse) {
+  .modal-close-button {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 10px;
+  }
+  
+  .modal-button {
+    min-height: 48px;
+    padding: 16px 20px;
+    font-size: 16px;
+  }
+  
+  /* Remove hover effects on touch devices */
+  .modal-close-button:hover {
+    background: none;
+  }
+  
+  .modal-button--cancel:hover {
+    background: #f3f4f6;
+  }
+  
+  .modal-button--confirm:hover {
+    background: #dc2626;
+  }
+  
+  .modal-button--primary:hover {
+    background: #3b82f6;
+  }
+  
+  /* Add active states for touch feedback */
+  .modal-button:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Landscape orientation for mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .modal-content {
+    max-height: 85vh;
+  }
+  
+  .modal-footer {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+  
+  .modal-button {
+    width: auto;
+    min-width: 100px;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 360px) {
+  .modal-backdrop {
+    padding: 8px;
+  }
+  
+  .modal-header {
+    padding: 12px 14px 8px;
+  }
+  
+  .modal-body {
+    padding: 8px 14px 12px;
+  }
+  
+  .modal-footer {
+    padding: 8px 14px 14px;
+  }
+  
+  .modal-title {
+    font-size: 14px;
+  }
+  
+  .modal-body {
+    font-size: 12px;
+  }
+}
