@@ -1,0 +1,574 @@
+/**
+ * Base Node Styling
+ */
+.text-message-node {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  min-width: 220px;
+  max-width: 300px;
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 
+               'Helvetica Neue', Arial, sans-serif;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.text-message-node:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border-color: #cbd5e1;
+}
+
+.text-message-node.hovered {
+  cursor: pointer;
+}
+
+/* Selected State - Clear visual indication with colors */
+.text-message-node.selected {
+  border-color: #3b82f6;
+  box-shadow: 
+    0 0 0 3px rgba(59, 130, 246, 0.1),
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  background: linear-gradient(135deg, #ffffff 0%, #eff6ff 100%);
+}
+
+.text-message-node.editing {
+  border-color: #10b981;
+  box-shadow: 
+    0 0 0 3px rgba(16, 185, 129, 0.1),
+    0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #ffffff 0%, #ecfdf5 100%);
+}
+
+.text-message-node.empty {
+  border-style: dashed;
+  background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+}
+
+.text-message-node.empty .message-text {
+  color: #9ca3af;
+  font-style: italic;
+}
+
+/**
+ * Node Header
+ */
+.node-header {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  padding: 12px 16px;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  position: relative;
+}
+
+/* Subtle shine effect on header */
+.node-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), transparent);
+  border-radius: 10px 10px 0 0;
+  pointer-events: none;
+}
+
+.node-header .node-icon {
+  font-size: 16px;
+  margin-right: 8px;
+}
+
+.node-header .node-title {
+  flex: 1;
+  font-weight: 600;
+}
+
+/* Edit Mode Indicator */
+.edit-indicator {
+  font-size: 14px;
+  opacity: 0.9;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.9; }
+  50% { opacity: 0.6; }
+}
+
+/**
+ * Node Content Area
+ * Comfortable spacing and typography for message content
+ */
+.node-content {
+  padding: 16px;
+  position: relative;
+}
+
+/**
+ * Message Preview Mode
+ * Elegant text display with hover effects
+ */
+.message-preview {
+  min-height: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 12px;
+  background: rgba(248, 250, 252, 0.5);
+  border: 1px solid rgba(226, 232, 240, 0.5);
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.message-preview:hover {
+  background: rgba(241, 245, 249, 0.7);
+  border-color: rgba(203, 213, 225, 0.7);
+}
+
+.message-text {
+  color: #374151;
+  font-size: 14px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  font-weight: 400;
+}
+
+/* Edit Hint for Empty Messages */
+.edit-hint {
+  color: #9ca3af;
+  font-size: 12px;
+  font-style: italic;
+  margin-top: 4px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.message-preview:hover .edit-hint {
+  opacity: 1;
+}
+
+/**
+ * Inline Editor
+ * Comfortable textarea for editing with proper styling
+ */
+.message-editor {
+  width: 100%;
+  min-height: 72px;
+  padding: 12px;
+  border: 2px solid #10b981;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  line-height: 1.5;
+  resize: vertical;
+  background: #ffffff;
+  color: #374151;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.message-editor:focus {
+  border-color: #059669;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.message-editor::placeholder {
+  color: #9ca3af;
+  font-style: italic;
+}
+
+/**
+ * Character Counter
+ * Helpful feedback during editing
+ */
+.character-count {
+  font-size: 11px;
+  color: #6b7280;
+  text-align: right;
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+/**
+ * Connection Handles
+ * Enhanced handle styling with better visual feedback
+ */
+.node-handle {
+  width: 12px;
+  height: 12px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.node-handle:hover {
+  transform: scale(1.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.target-handle {
+  left: -6px;
+  background: #10b981;
+}
+
+.source-handle {
+  right: -6px;
+  background: #3b82f6;
+}
+
+/* Connection States */
+.react-flow__handle-connecting {
+  background: #f59e0b !important;
+  transform: scale(1.3);
+}
+
+.react-flow__handle-valid {
+  background: #10b981 !important;
+  border-color: #ffffff !important;
+  transform: scale(1.2);
+}
+
+.react-flow__handle-invalid {
+  background: #ef4444 !important;
+  border-color: #ffffff !important;
+  transform: scale(1.1);
+}
+
+/* Add these styles to improve handle visibility and interaction */
+
+.text-message-node .node-handle {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.text-message-node .node-handle:hover {
+  transform: translateY(-50%) scale(1.2) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.text-message-node .target-handle:hover {
+  background: #059669 !important;
+}
+
+.text-message-node .source-handle:hover {
+  background: #2563eb !important;
+}
+
+/* Ensure handles are always visible and clickable */
+.text-message-node .node-handle {
+  opacity: 1 !important;
+  pointer-events: all !important;
+}
+
+/**
+ * Hover Tooltip
+ * Contextual help for better user experience
+ */
+.node-tooltip {
+  position: absolute;
+  bottom: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  z-index: 1000;
+  opacity: 0;
+  animation: tooltipFadeIn 0.3s ease forwards;
+}
+
+.node-tooltip::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 4px solid rgba(0, 0, 0, 0.8);
+}
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+
+@media (max-width: 1024px) {
+  .text-message-node {
+    min-width: 200px;
+    max-width: 280px;
+  }
+  
+  .node-header {
+    padding: 10px 14px;
+    font-size: 12px;
+  }
+  
+  .node-content {
+    padding: 14px;
+  }
+  
+  .message-text {
+    font-size: 13px;
+  }
+}
+
+/* Mobile devices */
+@media (max-width: 768px) {
+  .text-message-node {
+    min-width: 180px;
+    max-width: 240px;
+    border-radius: 10px;
+  }
+  
+  .node-header {
+    padding: 10px 12px;
+    font-size: 11px;
+    border-radius: 8px 8px 0 0;
+  }
+  
+  .node-header .node-icon {
+    font-size: 14px;
+    margin-right: 6px;
+  }
+  
+  .node-content {
+    padding: 12px;
+  }
+  
+  .message-preview {
+    min-height: 40px;
+    padding: 10px;
+    border-radius: 6px;
+  }
+  
+  .message-text {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  
+  .edit-hint {
+    font-size: 10px;
+    margin-top: 3px;
+  }
+  
+  .message-editor {
+    min-height: 60px;
+    padding: 10px;
+    font-size: 14px; /* Prevents zoom on iOS */
+    border-radius: 6px;
+  }
+  
+  .character-count {
+    font-size: 10px;
+    margin-top: 4px;
+  }
+  
+  /* Enhanced handles for touch */
+  .node-handle {
+    width: 16px;
+    height: 16px;
+    border-width: 2px;
+  }
+  
+  .target-handle {
+    left: -8px;
+  }
+  
+  .source-handle {
+    right: -8px;
+  }
+  
+  .node-tooltip {
+    bottom: -30px;
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .text-message-node {
+    min-width: 160px;
+    max-width: 200px;
+    border-radius: 8px;
+  }
+  
+  .node-header {
+    padding: 8px 10px;
+    font-size: 10px;
+    border-radius: 6px 6px 0 0;
+  }
+  
+  .node-header .node-icon {
+    font-size: 12px;
+    margin-right: 4px;
+  }
+  
+  .node-content {
+    padding: 10px;
+  }
+  
+  .message-preview {
+    min-height: 36px;
+    padding: 8px;
+  }
+  
+  .message-text {
+    font-size: 11px;
+  }
+  
+  .message-editor {
+    min-height: 50px;
+    padding: 8px;
+    font-size: 14px;
+  }
+  
+  .character-count {
+    font-size: 9px;
+  }
+  
+  .edit-indicator {
+    font-size: 12px;
+  }
+}
+
+/* Touch-friendly interactions */
+@media (hover: none) and (pointer: coarse) {
+  .text-message-node {
+    /* Remove hover effects that don't work on touch */
+  }
+  
+  .text-message-node:hover {
+    transform: none;
+  }
+  
+  .message-preview {
+    /* Increase touch target size */
+    min-height: 50px;
+    padding: 12px;
+  }
+  
+  .message-editor {
+    min-height: 80px;
+    padding: 16px;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+  
+  /* Larger handles for touch */
+  .node-handle {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .target-handle {
+    left: -10px;
+  }
+  
+  .source-handle {
+    right: -10px;
+  }
+  
+  /* Remove hover effects on handles */
+  .text-message-node .node-handle:hover {
+    transform: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Enhanced touch feedback */
+  .message-preview:active {
+    background: rgba(229, 231, 235, 0.8);
+    transform: scale(0.98);
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (max-width: 768px) and (orientation: landscape) {
+  .text-message-node {
+    min-width: 200px;
+    max-width: 260px;
+  }
+  
+  .node-content {
+    padding: 14px;
+  }
+  
+  .message-preview {
+    min-height: 44px;
+    padding: 12px;
+  }
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .text-message-node {
+    border-width: 1px;
+  }
+  
+  .node-handle {
+    border-width: 1px;
+  }
+  
+  .message-editor {
+    border-width: 1px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .text-message-node,
+  .message-preview,
+  .message-editor,
+  .node-handle {
+    transition: none;
+  }
+  
+  .edit-indicator {
+    animation: none;
+  }
+  
+  .node-tooltip {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .text-message-node {
+    border-width: 3px;
+  }
+  
+  .text-message-node.selected {
+    border-color: #000000;
+  }
+  
+  .message-text {
+    color: #000000;
+  }
+}
