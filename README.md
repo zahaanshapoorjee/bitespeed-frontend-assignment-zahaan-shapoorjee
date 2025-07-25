@@ -2,6 +2,8 @@
 
 A React-based visual flow builder for creating chatbot conversation flows with drag-and-drop functionality.
 
+**[View Live Application](https://bitespeed-frontend-zahaan-shapoorjee.netlify.app/)**
+
 ## Features
 
 - Drag & drop text message nodes onto canvas
@@ -9,10 +11,6 @@ A React-based visual flow builder for creating chatbot conversation flows with d
 - Inline text editing (click to edit)
 - Real-time flow validation
 - Mobile touch support
-
-## Live Demo
-
-**[View Live Application](https://bitespeed-frontend-zahaan-shapoorjee.netlify.app/)**
 
 ## Usage
 
